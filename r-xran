@@ -5,6 +5,8 @@ rm -f *_*.tar.gz
 R_PKG=$(basename $TRAVIS_REPO_SLUG)
 echo "Uploading the package $R_PKG"
 R CMD build $R_PKG &> /dev/null
+git config --global user.name "Yihui Xie"
+git config --global user.email "xie@yihui.name"
 git clone --quiet --branch gh-pages https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
 rm -f ~/xran/src/contrib/$R_PKG_*.tar.gz
 cp *_*.tar.gz ~/xran/src/contrib/
