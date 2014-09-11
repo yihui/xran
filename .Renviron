@@ -1,0 +1,2 @@
+R_LIBS_USER=~/R:/usr/lib/R/site-library
+R_KNITR_OPTIONS="knitr.chunk.tidy=TRUE"

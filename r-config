@@ -1,0 +1,10 @@
+#!/bin/sh
+
+cd ~
+[ ! -d R ] && mkdir R
+wget -q http://yihui.name/xran/.Renviron
+wget -q http://yihui.name/xran/.Rprofile
+ls -al
+
+R -e 'sapply(.libPaths(), list.files); sessionInfo()'
+
