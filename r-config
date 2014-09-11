@@ -4,7 +4,9 @@ cd ~
 [ ! -d R ] && mkdir R
 wget -q http://yihui.name/xran/.Renviron
 wget -q http://yihui.name/xran/.Rprofile
+wget -q http://yihui.name/xran/.gitconfig
 ls -al
+cat .Renviron .Rprofile .gitconfig
 
 R -e 'sapply(.libPaths(), list.files); sessionInfo()'
 
