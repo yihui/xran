@@ -4,7 +4,7 @@ cd ~
 [ ! -d R ] && mkdir R
 wget -q http://yihui.name/xran/.Renviron
 wget -q http://yihui.name/xran/.Rprofile
-wget -q http://yihui.name/xran/.gitconfig
+wget -q http://yihui.name/xran/.gitconfig -O .gitconfig
 ls -al
 cat .Renviron .Rprofile .gitconfig
 
