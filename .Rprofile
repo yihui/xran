@@ -1,1 +1,1 @@
-options(repos=c(RForge='http://rforge.net', CRAN='http://cran.rstudio.com'))
+options(repos=c(XRAN='http://yihui.name/xran', CRAN='http://cran.rstudio.com'))
