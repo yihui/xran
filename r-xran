@@ -8,7 +8,7 @@ R CMD build $R_PKG &> /dev/null
 git config --global user.name "Yihui Xie"
 git config --global user.email "xie@yihui.name"
 git clone --quiet https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
-rm -f ~/xran/src/contrib/$R_PKG_*.tar.gz
+rm -f ~/xran/src/contrib/${R_PKG}_*.tar.gz
 cp *_*.tar.gz ~/xran/src/contrib/
 cd ~/xran/
 Rscript -e "tools::write_PACKAGES('src/contrib', 'source')"
