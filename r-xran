@@ -11,9 +11,8 @@ git clone --quiet https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/nu
 rm -f ~/xran/src/contrib/$R_PKG_*.tar.gz
 cp *_*.tar.gz ~/xran/src/contrib/
 cd ~/xran/
-git checkout gh-pages
 Rscript -e "tools::write_PACKAGES('src/contrib', 'source')"
 git add -A
 git commit --amend -m"Add new packages from Travis build $TRAVIS_BUILD_NUMBER"
-git rebase master
+git rebase origin/master
 git push -fq origin gh-pages > /dev/null
