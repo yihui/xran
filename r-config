@@ -1,6 +1,9 @@
 #!/bin/sh
 
 cd ~
+git config --global user.name "Yihui Xie"
+git config --global user.email "xie@yihui.name"
+
 [ ! -d R ] && mkdir R
 wget -q http://yihui.name/xran/.Renviron
 wget -q http://yihui.name/xran/.Rprofile
