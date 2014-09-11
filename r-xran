@@ -3,13 +3,14 @@
 cd ..
 rm -f *_*.tar.gz
 R_PKG=$(basename $TRAVIS_REPO_SLUG)
+echo "Uploading the package $R_PKG"
 R CMD build $R_PKG &> /dev/null
 git clone --quiet --branch gh-pages https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
 rm -f ~/xran/src/contrib/$R_PKG_*.tar.gz
 cp *_*.tar.gz ~/xran/src/contrib/
 cd ~/xran/
 Rscript -e "tools::write_PACKAGES('src/contrib', 'source')"
-git add -f .
+git add -A
 git commit --amend -m"Add new packages from Travis build $TRAVIS_BUILD_NUMBER"
 git rebase master
 git push -f origin gh-pages
