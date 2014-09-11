@@ -7,12 +7,13 @@ echo "Uploading the package $R_PKG"
 R CMD build $R_PKG &> /dev/null
 git config --global user.name "Yihui Xie"
 git config --global user.email "xie@yihui.name"
-git clone --quiet --branch gh-pages https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
+git clone --quiet https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
 rm -f ~/xran/src/contrib/$R_PKG_*.tar.gz
 cp *_*.tar.gz ~/xran/src/contrib/
 cd ~/xran/
+git checkout gh-pages
 Rscript -e "tools::write_PACKAGES('src/contrib', 'source')"
 git add -A
 git commit --amend -m"Add new packages from Travis build $TRAVIS_BUILD_NUMBER"
 git rebase master
-git push -f origin gh-pages
+git push -fq origin gh-pages > /dev/null
