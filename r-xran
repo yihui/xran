@@ -15,6 +15,6 @@ cp *_*.tar.gz ~/xran/src/contrib/
 cd ~/xran/
 Rscript -e "tools::write_PACKAGES('src/contrib', 'source')"
 git add -A
-git commit --amend -m"Add new packages from Travis build $TRAVIS_BUILD_NUMBER"
+git commit --amend -m"add new packages from Travis build $TRAVIS_BUILD_NUMBER ($TRAVIS_REPO_SLUG)"
 git rebase origin/master
 git push -fq origin gh-pages > /dev/null
