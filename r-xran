@@ -2,16 +2,25 @@
 
 set -e
 
+[ "${TRAVIS_PULL_REQUEST}" != "false" ] && exit 0
+[ -z "${R_PKG}" ] && exit 0
+
 cd ..
-rm -f *_*.tar.gz
-R_PKG=$(basename $TRAVIS_REPO_SLUG)
+R CMD INSTALL $R_PKG*.tar.gz
+
+if [ ! -z $R_VIGNETTE ]; then
+  rm -rf gh-pages && git clone -b gh-pages https://${GH_TOKEN}@github.com/yihui/${R_PKG}.git gh-pages
+  cd gh-pages && cp ~/R/${R_PKG}/doc/${R_VIGNETTE} index.html
+  git add index.html && git commit -m"update homepage (travis build ${TRAVIS_BUILD_NUMBER})" && git push -q origin gh-pages
+  cd ..
+fi
+
 echo "Uploading the package $R_PKG"
-R CMD build $R_PKG &> /dev/null
 git config --global user.name "Yihui Xie"
 git config --global user.email "xie@yihui.name"
 git clone --quiet https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
 rm -f ~/xran/src/contrib/${R_PKG}_*.tar.gz
-cp *_*.tar.gz ~/xran/src/contrib/
+cp ${R_PKG}_*.tar.gz ~/xran/src/contrib/
 cd ~/xran/
 Rscript -e "tools::write_PACKAGES('src/contrib', 'source')"
 git add -A
