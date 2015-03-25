@@ -1,9 +1,13 @@
 x = list.files('src/contrib', '.tar.gz$', full.names = TRUE)
 x = paste(sprintf('<li><a href="%s">%s</a></li>', x, basename(x)), collapse = '\n')
 writeLines(c(
-  '<html>',
-  '<head><title>XRAN | A Personal R Package Repository of Yihui Xie</title></head>',
+  '<!DOCTYPE html><html lang="en">',
+  '<head>',
+  '<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">',
+  '<title>XRAN | A Personal R Package Repository of Yihui Xie</title>',
+  '</head>',
   '<body>',
+  '<div class="container">',
   '<p>',
   'This is a personal and experimental R package repository of Yihui Xie.',
   'It contains some of my source packages under development.',
@@ -21,6 +25,7 @@ writeLines(c(
   '<ul>',
   x,
   '</ul>',
+  '</div>',
   '</body>',
   '</html>'
 ), 'index.html')
