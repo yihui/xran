@@ -5,7 +5,7 @@ set -e
 [ "${TRAVIS_PULL_REQUEST}" != "false" ] && exit 0
 [ -z "${R_PKG}" ] && exit 0
 
-cd ..
+ls $R_PKG*.tar.gz || cd ..
 R CMD INSTALL $R_PKG*.tar.gz
 
 if [ ! -z $R_VIGNETTE ]; then
