@@ -16,8 +16,6 @@ if [ ! -z $R_VIGNETTE ]; then
 fi
 
 echo "Uploading the package $R_PKG"
-git config --global user.name "Yihui Xie"
-git config --global user.email "xie@yihui.name"
 git clone --quiet https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
 rm -f ~/xran/src/contrib/${R_PKG}_*.tar.gz
 cp ${R_PKG}_*.tar.gz ~/xran/src/contrib/
