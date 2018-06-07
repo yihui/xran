@@ -19,7 +19,7 @@ writeLines(c(
   'install.packages(
   "PACKAGE_NAME",
   type = "source",
-  repos = c("http://yihui.name/xran", "http://cran.rstudio.com")
+  repos = c("https://xran.yihui.name", "https://cran.rstudio.com")
 )',
   '</pre>',
   '<ul>',
