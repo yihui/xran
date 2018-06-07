@@ -8,13 +8,6 @@ set -e
 ls $R_PKG*.tar.gz || cd ..
 R CMD INSTALL $R_PKG*.tar.gz
 
-if [ ! -z $R_VIGNETTE ]; then
-  rm -rf gh-pages && git clone -b gh-pages https://${GH_TOKEN}@github.com/yihui/${R_PKG}.git gh-pages
-  cd gh-pages && cp $R_LIBS_USER/${R_PKG}/doc/${R_VIGNETTE} index.html
-  git add index.html && git commit -m"update homepage (travis build ${TRAVIS_BUILD_NUMBER})" && git push -q origin gh-pages
-  cd ..
-fi
-
 echo "Uploading the package $R_PKG"
 git clone --quiet https://${GH_TOKEN}@github.com/yihui/xran.git ~/xran > /dev/null
 rm -f ~/xran/src/contrib/${R_PKG}_*.tar.gz
