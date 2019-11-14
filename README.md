@@ -5,6 +5,6 @@ not want to give people an impression that I'm trying to fragment the R package
 community, which will be too bad.
 
 The goal here is to be able to install source packages via the repo
-http://yihui.name/xran. Most of my packages are written in pure R, so they can
+https://xran.yihui.org. Most of my packages are written in pure R, so they can
 be easily installed on Windows/OS X (even without Rtools/Xcode). I do not care
 about binary packages here, and that is why CRAN is valuable.
